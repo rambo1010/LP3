@@ -1,0 +1,116 @@
+//Program for RSA asymmetric cryptographic algorithm
+//for demonstration values are relatively small compared to practical application
+ 
+#include<stdio.h>
+#include<math.h>
+ 
+//to find gcd
+int gcd(int a, int h)
+{
+    int temp;
+    while(1)
+    {
+        temp = a%h;
+        if(temp==0)
+        return h;
+        a = h;
+        h = temp;
+    }
+}
+ 
+int main()
+{
+    //2 random prime numbers
+    double p = 3;
+    double q = 7;
+    double n=p*q;
+    double count;
+    double totient = (p-1)*(q-1);
+ 
+    //public key
+    //e stands for encrypt
+    double e=2;
+ 
+    //for checking co-prime which satisfies e>1
+    while(e<totient){
+    count = gcd(e,totient);
+    if(count==1)
+        break;
+    else
+        e++;
+    }
+ 
+    //private key
+    //d stands for decrypt
+    double d;
+ 
+    //k can be any arbitrary value
+    double k = 2;
+ 
+    //choosing d such that it satisfies d*e = 1 + k * totient
+    d = (1 + (k*totient))/e;
+    double msg = 12;
+    double c = pow(msg,e);
+    double m = pow(c,d);
+    c=fmod(c,n);
+    m=fmod(m,n);
+ 
+    printf("Message data = %lf",msg);
+    printf("\np = %lf",p);
+    printf("\nq = %lf",q);
+    printf("\nn = pq = %lf",n);
+    printf("\ntotient = %lf",totient);
+    printf("\ne = %lf",e);
+    printf("\nd = %lf",d);
+    printf("\nEncrypted data = %lf",c);
+    printf("\nOriginal Message Sent = %lf",m);
+ 
+    return 0;
+}
+#################################################################################################
+#PYTHON
+def gcd(a,b): 
+    if b==0: 
+        return a 
+    else: 
+        return gcd(b,a%b) 
+        
+p = int(input('Enter the value of p = ')) 
+q = int(input('Enter the value of q = ')) 
+pt = input('Enter the value of text = ')
+
+
+
+n = p*q 
+t = (p-1)*(q-1) 
+
+for e in range(2,t): 
+	if gcd(e,t)== 1: 
+		break
+        
+print("e:",e)     
+
+
+  
+for d in range(1,t):
+	if e*d%t==1:
+		break       
+print("d:",d)        
+
+l=[]  
+s1=""      
+for i in pt:
+	ctt =pow(ord(i),e) 
+	ct = ctt % n 
+	l.append(ct)
+  
+for j in range(len(l)):
+	dtt = pow(l[j],d) 
+	dt = dtt % n 
+	s1+=chr(dt)
+
+
+
+print("Plain Text",pt)
+print("Cipher Text",l)
+print("Original Text",s1)
