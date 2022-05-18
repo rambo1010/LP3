@@ -5,15 +5,16 @@ style.use('ggplot')
 xs = np.array([10, 9, 2, 15, 10, 16, 11, 16], dtype=np.float64)
 ys = np.array([95, 80, 10, 50, 45, 98, 38, 93], dtype=np.float64)
 def best_fit_slope_and_intercept(xs, ys):
-x_mean = np.sum(xs) / np.size(xs)
-y_mean = np.sum(ys) / np.size(ys)
-xy_mean = (np.sum(xs * ys) / np.size(xs))
-x_mean_sq = x_mean * x_mean
-x_sq_mean = (np.sum(xs * xs) / np.size(xs))
-m = (((x_mean * y_mean) - xy_mean) /
-(x_mean_sq - x_sq_mean))
-b = (y_mean - (m * x_mean))
-return m, b
+  x_mean = np.sum(xs) / np.size(xs)
+  y_mean = np.sum(ys) / np.size(ys)
+  xy_mean = (np.sum(xs * ys) / np.size(xs))
+  x_mean_sq = x_mean * x_mean
+  x_sq_mean = (np.sum(xs * xs) / np.size(xs))
+  m = (((x_mean * y_mean) - xy_mean) /
+  (x_mean_sq - x_sq_mean))
+  b = (y_mean - (m * x_mean))
+  return m, b
+
 m, b = best_fit_slope_and_intercept(xs, ys)
 regression_line = [(m * x) + b for x in xs]
 predict_x = 20
