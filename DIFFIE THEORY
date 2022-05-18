@@ -12,3 +12,9 @@ Bob and Alice use their secret integers to compute
 They next exchange these computed values, Alice sends A to Bob and Bob sends B to Alice. Note that Eve gets to see the values of A and B,
 since they are sent over the insecure communication channel. Finally, Bob and Alice again use their secret integers to compute
 The values that they compute, A0 and B0 respectively, are actually the same, since A 0 ≡ B a ≡ (g b ) a ≡ g ab ≡ (g a ) b ≡ A b ≡ B 0 (mod p). 
+Steps in the algorithm:
+1 Alice and Bob agree on a prime number p and a base g.
+2 Alice chooses a secret number a, and sends Bob ( g a mod p). 
+3 Bob chooses a secret number b, and sends Alice ( g b mod p). 
+4 Alice computes (( g b mod p ) a mod p).
+5 Bob computes (( g a mod p ) b mod p). Both Alice and Bob can use this number as their key. Notice tha t p and g need not be protected
