@@ -1,0 +1,22 @@
+Diffie – Hellman algorithm is an algorithm that allows two parties to get the shared secret key using the communication channel, which is not protected
+from the interception but is protected from modification.
+Diffie – Hellman algorithm is extremely simple in its idea and with it has rather high level of cryptographic stability, which is based on the supposed
+complexity of the discrete problem of taking the logarithm.
+Supposing there are two participants of the exchange (let’s call them Alice and Bob, as it is traditionally established in cryptography). Both of them
+know two numbers P and G. These numbers are not secret and can be known to anyone. The goal of Alice and Bob is to obtain the shared secret key to help 
+them to exchange messages in future.
+Elliptic Curve Cryptography (ECC) is an approach to public-key cryptography, based on the algebraic structure of elliptic curves over finite fields.
+ECC requires a smaller key as compared to non-ECC cryptography to provide equivalent security (a 256-bit ECC security have an equivalent security attained
+by 3072-bit RSA cryptography).
+For a better understanding of Elliptic Curve Cryptography, it is very important to understand the basics of Elliptic Curve. An elliptic curve is a planar
+algebraic curve defined by an equation of the form
+where ‘a’ is the co-efficient of x and ‘b’ is the constant of the equation
+The curve is non-singular; that is its graph has no cusps or self-intersections. (when the characteristic of the co-efficient field is equal to 2 or 3).
+In general, an elliptic curve looks like as shown below. Elliptic curves could intersect at most 3 points when a straight line is drawn intersecting the curve. As we can 
+see that elliptic curve is symmetric about the x-axis, this property plays a key role in the algorithm.
+The Diffie-Hellman algorithm is being used to establish a shared secret that can be used for secret communications while exchanging data over a public network 
+using the elliptic curve to generate points and get the secret key using the parameters.
+• For the sake of simplicity and practical implementation of the algorithm,
+we will consider only 4 variables one prime P and G (a primitive root of P) and two private values a and b.
+• P and G are both publicly available numbers. Users (say Alice and Bob) pick private values a and b and they generate a key and exchange it publicly, the opposite 
+person received the key and from that generates a secret key after which they have the same secret key to encrypt.
