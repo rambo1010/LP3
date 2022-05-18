@@ -1,0 +1,14 @@
+Concepts:
+The Diffie–Hellman key exchange algorithm solves the following dilemma. Alice and Bob want to share a secret key for use in a symmetric cipher, but their only
+means of communication is insecure. Every piece of information that they exchange is observed by their adversary Eve. How is it possible for Alice and Bob to 
+share a key without making it available to Eve? At first glance it appears that Alice and Bob face an impossible task. It was a brilliant insight of Diffie and 
+Hellman that the difficulty of the discrete logarithm problem for F ∗ p provides a possible solution.
+The first step is for Alice and Bob to agree on a large prime p and a nonzero integer g modulo p. Alice and Bob make the values of p and g public knowledge; 
+for example, they might post the values on their web sites, so Eve knows them, too. For various reasons to be discussed later, it is best if they choose g such 
+that its order in F ∗ p is a large prime.
+The next step is for Alice to pick a secret integer a that she does not reveal to anyone, while at the same time Bob picks an integer b that he keeps secret.
+Bob and Alice use their secret integers to compute
+
+They next exchange these computed values, Alice sends A to Bob and Bob sends B to Alice. Note that Eve gets to see the values of A and B,
+since they are sent over the insecure communication channel. Finally, Bob and Alice again use their secret integers to compute
+The values that they compute, A0 and B0 respectively, are actually the same, since A 0 ≡ B a ≡ (g b ) a ≡ g ab ≡ (g a ) b ≡ A b ≡ B 0 (mod p). 
