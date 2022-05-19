@@ -70,7 +70,7 @@ def decrypt(cipher, key): # applies decryption algorithm
     return FinalPermutation(mixer(keyGen(key)[0], swapper(t)))
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     plaintext = input("Enter plaintext: ") # any length character input
     key = int(input("Enter Key: ")) # binary input of length 10
     encipher = ""
